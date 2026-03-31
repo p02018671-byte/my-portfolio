@@ -434,5 +434,18 @@ toggleSwitch.addEventListener('change', (e) => {
     } else {
         document.body.classList.remove('light-mode');
         document.querySelector('.icon').textContent = '🌙';
-    }    
+    }    const langBtn = document.querySelector('.lang-btn');
+let currentLang = 'en';
+
+langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'bn' : 'en';
+    
+    // সব এলিমেন্ট খুঁজে বের করো যেগুলোর ডাটা এট্রিবিউট আছে
+    document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+    });
+    
+    // বাটনের টেক্সট আপডেট করো
+    langBtn.textContent = currentLang === 'en' ? 'BN' : 'EN';
+});
 });
