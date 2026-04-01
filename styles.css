@@ -93,4 +93,25 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; }
     height: 4px;
     background: #00f2ff;
     border-radius: 10px;
+}/* ১. ছবির জন্য শ্বাস নেওয়ার মতো (Breathing) অ্যানিমেশন */
+@keyframes breathe {
+    0% { box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); transform: scale(1); }
+    50% { box-shadow: 0 0 45px rgba(0, 242, 255, 0.7); transform: scale(1.03); }
+    100% { box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); transform: scale(1); }
+}
+
+/* ২. ছবির ওপর মাউস নিলে হালকা কাত (Tilt) হওয়ার ইফেক্ট */
+.profile-img-container {
+    animation: breathe 4s infinite ease-in-out;
+    transition: transform 0.3s ease-out;
+}
+
+.profile-img-container:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.1) !important;
+    box-shadow: 0 0 60px rgba(0, 242, 255, 0.9) !important;
+}
+
+/* ৩. স্ক্রল করলে কার্ডগুলো ধীরে ধীরে ভেসে উঠবে */
+.project-card {
+    transition: all 0.5s ease;
 }
